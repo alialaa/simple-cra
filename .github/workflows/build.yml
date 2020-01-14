@@ -19,4 +19,9 @@ jobs:
     - run: npm test -- --coverage
       env:
         CI: true
-    - run: npm run build
+    - name: Build
+      run: npm run build
+      if: github.event_name == 'push'
+    - name: Deploy
+      run: npx surge --project ./build --domain enormous-poison.surge.sh
+      if: github.event_name == 'push'
