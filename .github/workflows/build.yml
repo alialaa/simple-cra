@@ -20,3 +20,4 @@ jobs:
       env:
         CI: true
     - run: npm run build
+      if: github.event_name === push
