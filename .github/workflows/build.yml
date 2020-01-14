@@ -24,4 +24,7 @@ jobs:
       if: github.event_name == 'push'
     - name: Deploy
       run: npx surge --project ./build --domain enormous-poison.surge.sh
+      env: 
+        SURGE_LOGIN: ${{ secrets.SURGE_LOGIN}}
+        SURGE_TOKEN: ${{ secrets.SURGE_TOKEN}}
       if: github.event_name == 'push'
