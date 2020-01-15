@@ -35,6 +35,8 @@ jobs:
         path: coverage
     - name: Upload to codecov
       run: npx codecov
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     - name: Build
       run: npm run build
       if: github.event_name == 'push'
@@ -50,7 +52,6 @@ jobs:
         SURGE_LOGIN: ${{ secrets.SURGE_LOGIN}}
         SURGE_TOKEN: ${{ secrets.SURGE_TOKEN}}
       if: github.event_name == 'push'
-
   codecov:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
