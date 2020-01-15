@@ -48,3 +48,16 @@ jobs:
         SURGE_LOGIN: ${{ secrets.SURGE_LOGIN}}
         SURGE_TOKEN: ${{ secrets.SURGE_TOKEN}}
       if: github.event_name == 'push'
+
+  codecov:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: ls -a
+      - name: Download Report
+        uses: actions/download-artifact@v1
+        with:
+          name: coverage
+      - run: ls -a
+      - run: npx codecov
