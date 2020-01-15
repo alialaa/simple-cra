@@ -58,6 +58,7 @@ jobs:
       - name: Download Report
         uses: actions/download-artifact@v1
         with:
-          name: coverage
+          name: code-coverage-report
+          path: coverage
       - run: ls -a
       - run: npx codecov
