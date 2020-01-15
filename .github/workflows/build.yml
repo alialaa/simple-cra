@@ -28,9 +28,20 @@ jobs:
     - run: npm test -- --coverage
       env:
         CI: true
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v1
+      with:
+        name: code-coverage-report
+        path: coverage
     - name: Build
       run: npm run build
       if: github.event_name == 'push'
+    - name: Archive build
+      if: github.event_name == 'push'
+      uses: actions/upload-artifact@v1
+      with:
+        name: build
+        path: build
     - name: Deploy
       run: npx surge --project ./build --domain enormous-poison.surge.sh
       env: 
