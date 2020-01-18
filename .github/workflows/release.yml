@@ -7,7 +7,13 @@ jobs:
   slack-message:
     runs-on: ubuntu-latest
     steps:
-      - name: Log github
-        run: echo "$GITHUB_CONTEXT"
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@master
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+          SLACK_CHANNEL: general
+          SLACK_COLOR: '#f03'
+          SLACK_ICON: https://api.adorable.io/avatars/285/abott@adorable.png
+          SLACK_MESSAGE: "New release ${{ github.event.release.tag_name }} is out, check it out now: ${{ github.event.release.html_url }}."
+          SLACK_TITLE: New Release!! 🚀
+          SLACK_USERNAME: alialaa
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
