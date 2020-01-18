@@ -1,0 +1,13 @@
+name: Notify on Release
+on:
+  release:
+    types: [published]
+
+jobs:
+  slack-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log github
+        run: echo $GITHUB_CONTEXT
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
