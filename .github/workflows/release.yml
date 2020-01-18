@@ -8,12 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Slack Notification
-        uses: rtCamp/action-slack-notify@master
-        env:
-          SLACK_CHANNEL: general
-          SLACK_COLOR: '#f03'
-          SLACK_ICON: https://api.adorable.io/avatars/285/abott@adorable.png
-          SLACK_MESSAGE: "New release ${{ github.event.release.tag_name }} is out, <${{ github.event.release.html_url }}|check it out now.>"
-          SLACK_TITLE: New Release!! 🚀
-          SLACK_USERNAME: alialaa
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        run: "curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"New release ${{ github.event.release.tag_name }} is out, <${{ github.event.release.html_url }}|check it out now.>\"}' ${{ secrets.SLACK_WEBHOOK }}"
+    
