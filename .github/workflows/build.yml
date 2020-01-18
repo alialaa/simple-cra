@@ -59,7 +59,8 @@ jobs:
       if: github.event_name == 'push' && github.ref == 'refs/heads/master' 
       run: npx semantic-release
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.CUSTOM_GH_TOKEN }}
     - name: Deploy to staging
       if: github.event_name == 'push' && github.ref == 'refs/heads/develop' 
       run: npx surge --project ./build --domain enormous-poison.surge.sh
