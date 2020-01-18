@@ -32,7 +32,7 @@ jobs:
       env:
         CI: true
     - name: Open Issue if Tests Fail
-      if: faliure() && github.event_name == 'pull_request'
+      if: failure() && github.event_name == 'pull_request'
       env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
