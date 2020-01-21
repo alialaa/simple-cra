@@ -1,5 +1,5 @@
 module.exports = {
-branches: "master",
+  branches: "master",
   repositoryUrl: "https://github.com/alialaa/simple-cra",
   plugins: [
     "@semantic-release/commit-analyzer",
