@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   pull_request:
-    branches: [develop, master]
+    branches: [develop22, master22]
   push:
-    branches: [develop, master]
+    branches: [develop22, master22]
 
 jobs:
   build:
@@ -32,19 +32,25 @@ jobs:
       - run: npm test -- --coverage
         env:
           CI: true
+
       - name: Archive code coverage results
         uses: actions/upload-artifact@v1
         with:
           name: code-coverage-report
           path: coverage
+          
       # - name: Upload to codecov
       #   if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       #   run: npx codecov
       #   env:
       #     CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+
       - name: Build
         run: npm run build
         if: github.event_name == 'push'
+
+
       - name: Archive build
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v1
@@ -62,9 +68,13 @@ jobs:
         env:
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.CUSTOM_GH_TOKEN }}
+
+
       - name: Deploy to staging
         if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
         run: npx surge --project ./build --domain enormous-poison.surge.sh
+
+
       - name: Deploy to production
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npx surge --project ./build --domain enormous-poison-prod.surge.sh
@@ -74,7 +84,7 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Open Issue if Tests Fail
-        if: failure() && github.event_name == 'pull_request'
+        if: failure() && github.event_name == 'pull_request' #ignore pull??
         run: |
           curl --request POST \
           --url https://api.github.com/repos/${{ github.repository }}/issues \
