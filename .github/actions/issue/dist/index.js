@@ -7249,7 +7249,7 @@ const github = __webpack_require__(469);
 
 try {
   // `who-to-greet` input defined in action metadata file
-  throw(new Error('No'))
+  // throw(new Error('No'))
   const nameToGreet = core.getInput('who-to-greet');
   console.log(`Hello ${nameToGreet}!`);
   // const time = (new Date()).toTimeString();
