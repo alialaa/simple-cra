@@ -4,12 +4,13 @@ const github = require('@actions/github');
 try {
   // `who-to-greet` input defined in action metadata file
   // throw(new Error('No'))
-  core.setSecret(nameToGreet);
+
 
   core.debug('Getting Input');
   core.warning('nameToGreet was not set');
   core.error(`Error`);
   const nameToGreet = core.getInput('who-to-greet');
+  core.setSecret(nameToGreet);
   console.log(`Hello ${nameToGreet}!`);
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
