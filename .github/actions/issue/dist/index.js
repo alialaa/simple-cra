@@ -7249,12 +7249,13 @@ const github = __webpack_require__(469);
 
 try {
   // `who-to-greet` input defined in action metadata file
+  throw(new Error('No'))
   const nameToGreet = core.getInput('who-to-greet');
   console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
+  // const time = (new Date()).toTimeString();
+  core.setOutput("time", new Date());
   // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github, undefined, 2)
+  const payload = JSON.stringify(github, null, '\t')
   console.log(`The event payload: ${payload}`);
 } catch (error) {
   core.setFailed(error.message);
