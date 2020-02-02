@@ -13,6 +13,11 @@ jobs:
         id: hello
         with:
           token: ${{ secrets.CUSTOM_GH_TOKEN }}
+          title: Hello Issue
+          body: Loool
+      - name: Get the output time
+        run: |
+          echo ${{ steps.hello.outputs.issue }}
       # - name: Hello world action step
       #   uses: ./.github/actions/issue
       #   id: hello

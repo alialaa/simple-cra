@@ -2,11 +2,18 @@ name: 'Hello World'
 author: alialaa
 description: 'Greet someone and record the time'
 inputs:
-  token:  # id of input
+  token:
     description: 'Github Token'
     required: true
+  title:
+    description: 'Issue Title'
+    required: true
+  body:
+    description: 'Issue Body'
+  assignees:
+    description: 'Issue Assignees'
 outputs:
-  time: # id of output
+  issue: # id of output
     description: 'The time we greeted you'
 runs:
   using: 'node12'
