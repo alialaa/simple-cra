@@ -5,20 +5,17 @@ async function run() {
   try {
     const token = core.getInput('token');
     const octokit = new github.GitHub(token);
-    const context = JSON.stringify(github.context)
   
-    console.log(context);
+    const issue = await octokit.issues.create({
+      // owner: github.context.repo.owner,
+      // repo: github.context.repo.repo,
+      ...github.context.repo,
+      title: 'New issue!',
+      body: 'Hello Universe!',
+      assignees: ["alialaa"]
+    });
 
-    // const { data: pullRequest } = await octokit.issues.create({
-    //   owner: 'octokit',
-    //   repo: 'rest.js',
-    //   pull_number: 123,
-    //   mediaType: {
-    //     format: 'diff'
-    //   }
-    // });
-
-    // console.log(pullRequest);
+    console.log(issue);
   } catch (error) {
     core.setFailed(error.message);
   }
