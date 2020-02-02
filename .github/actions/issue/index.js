@@ -3,8 +3,8 @@ const github = require('@actions/github');
 
 async function run() {
   try {
-    const myToken = core.getInput('myToken');
-    const octokit = new github.GitHub(myToken);
+    const token = core.getInput('token');
+    const octokit = new github.GitHub(token);
     const context = JSON.stringify(github.context, null, '\t')
   
     console.log(context);
