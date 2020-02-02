@@ -10,7 +10,7 @@ async function run() {
       // owner: github.context.repo.owner,
       // repo: github.context.repo.repo,
       ...github.context.repo,
-      // title: 'New issue!',
+      title: 'New issue!',
       body: 'Hello Universe!',
       assignees: ["alialaa"]
     });
