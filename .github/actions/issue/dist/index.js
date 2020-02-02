@@ -7247,31 +7247,30 @@ function authenticationBeforeRequest(state, options) {
 const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 
-try {
-  // `who-to-greet` input defined in action metadata file
-  // throw(new Error('No'))
-
-
-  core.debug('Getting Input');
-  core.warning('nameToGreet was not set');
-  core.error(`Error`);
-  const nameToGreet = core.getInput('who-to-greet');
-  core.setSecret(nameToGreet);
-  console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github, null, '\t')
+async function run() {
+  try {
+    const myToken = core.getInput('myToken');
+    const octokit = new github.GitHub(myToken);
+    const context = JSON.stringify(github.context, null, '\t')
   
-  core.startGroup('Do some function')
-  console.log(`The event payload: ${payload}`);
-  console.log(`Hello`);
-  core.endGroup()
+    console.log(context);
 
-  core.exportVariable('HELLO', time);
-} catch (error) {
-  core.setFailed(error.message);
+    // const { data: pullRequest } = await octokit.issues.create({
+    //   owner: 'octokit',
+    //   repo: 'rest.js',
+    //   pull_number: 123,
+    //   mediaType: {
+    //     format: 'diff'
+    //   }
+    // });
+
+    // console.log(pullRequest);
+  } catch (error) {
+    core.setFailed(error.message);
+  }
 }
+
+run();
 
 /***/ }),
 
