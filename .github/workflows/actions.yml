@@ -14,6 +14,7 @@ jobs:
         with:
           token: ${{ secrets.CUSTOM_GH_TOKEN }}
           title: Hello Issue
+          body: looool
           assignees: |
             alialaa
             alialaa17
