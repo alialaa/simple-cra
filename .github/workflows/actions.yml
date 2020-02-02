@@ -20,7 +20,7 @@ jobs:
             alialaa17
       - name: Get the output time
         run: |
-          echo ${{ toJson(steps.hello.outputs.issue ) }}
+          echo ${{ toJson(steps.hello.outputs.issue ).url }}
       # - name: Hello world action step
       #   uses: ./.github/actions/issue
       #   id: hello
