@@ -5,9 +5,9 @@ async function run() {
   try {
     const token = core.getInput('token');
     const octokit = new github.GitHub(token);
-    const context = JSON.stringify(github.context.repo, null, '\t')
+    const context = JSON.stringify(github.context)
   
-    console.log(github.context.repo);
+    console.log(context);
 
     // const { data: pullRequest } = await octokit.issues.create({
     //   owner: 'octokit',
