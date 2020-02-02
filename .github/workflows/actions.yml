@@ -14,13 +14,13 @@ jobs:
         with:
           token: ${{ secrets.CUSTOM_GH_TOKEN }}
           title: Hello Issue
-          # body: looool
-          # assignees: |
-          #   alialaa
-          #   alialaa17
+          body: looool
+          assignees: |
+            alialaa
+            alialaa17
       - name: Get the output time
         run: |
-          echo ${{ steps.hello.outputs.issue }}
+          echo ${{ toJson(steps.hello.outputs.issue ) }}
       # - name: Hello world action step
       #   uses: ./.github/actions/issue
       #   id: hello
