@@ -12,6 +12,7 @@ inputs:
     description: 'Issue Body'
   assignees:
     description: 'Issue Assignees'
+    default: []
 outputs:
   issue: # id of output
     description: 'The time we greeted you'
