@@ -17,7 +17,7 @@ echo '::endgroup::'
 
 echo "::set-env name=HELLO::$time"
 
-if [ $1 == 'Mona the Octocat'] ; then
+if [ $1 == 'Mona the Octocat' ] ; then
   echo "::error ::Here's a error message"
   exit 1
 fi
