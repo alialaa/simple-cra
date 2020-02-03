@@ -3,6 +3,9 @@ require_once 'vendor/autoload.php';
 
 Requests::register_autoloader();
 
+var_dump($argv);
+var_dump($_ENV);
+
 $response = Requests::post(
     'https://hooks.slack.com/services/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', 
     array(
