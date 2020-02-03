@@ -14,7 +14,8 @@ $response = Requests::post(
 );
 
 // var_dump($response->body);
-print("::set-env name=HELLO::rofl");
+echo "::set-env name=HELLO::loool\n";
+// echo $output;
 
 if(!$response->success) {
     echo $response->body;
