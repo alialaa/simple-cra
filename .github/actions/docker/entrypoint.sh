@@ -1,5 +1,11 @@
 #!/bin/sh -l
 
+if [ $1 == "Mona the Octocat" ] 
+then
+  echo "error message"
+  exit 1
+fi
+
 echo "::debug ::Here's a debug message"
 echo "::warning ::Here's a warning message"
 echo "::error ::Here's a error message"
@@ -17,7 +23,4 @@ echo '::endgroup::'
 
 echo "::set-env name=HELLO::$time"
 
-if [ $1 == 'Mona the Octocat' ] ; then
-  echo "::error ::Here's a error message"
-  exit 1
-fi
+
