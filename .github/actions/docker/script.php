@@ -3,6 +3,7 @@ require_once 'vendor/autoload.php';
 
 Requests::register_autoloader();
 
+var_dump($argv);
 var_dump(getenv('INPUT_WHO-TO-GREET'));
 
 $response = Requests::post(
