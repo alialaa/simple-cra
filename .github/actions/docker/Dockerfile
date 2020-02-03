@@ -1,6 +1,5 @@
-FROM alpine:3.11
+FROM 7.4.2-cli-buster
 
-COPY entrypoint.sh /entrypoint.sh
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-ENTRYPOINT ["/entrypoint.sh"]
-# CMD ["World"]
+ENTRYPOINT ["composer", '-v']
