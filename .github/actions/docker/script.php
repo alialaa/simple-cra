@@ -15,7 +15,7 @@ $response = Requests::post(
 
 // var_dump($response->body);
 $output = shell_exec('echo "::set-env name=HELLO::loool"');
-// echo "<pre>$output</pre>";
+echo $output;
 
 if(!$response->success) {
     echo $response->body;
