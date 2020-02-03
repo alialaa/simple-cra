@@ -19,5 +19,5 @@ $output = shell_exec('echo "::set-env name=HELLO::loool"');
 
 if(!$response->success) {
     echo $response->body;
-    exit(1);
+    // exit(1);
 }
