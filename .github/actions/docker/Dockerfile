@@ -9,4 +9,4 @@ RUN apt-get update
 RUN apt-get -y install zip
 RUN composer install
 
-ENTRYPOINT ["/usr/bin/php","script.php"]
+ENTRYPOINT ["/usr/bin/php","./script.php"]
