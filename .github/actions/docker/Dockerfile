@@ -5,6 +5,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /usr/src/app
 COPY . .
-RUN composer install
+RUN composer install --prefer-dist
 
 ENTRYPOINT ["php", 'script.php']
