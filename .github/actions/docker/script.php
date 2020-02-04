@@ -4,15 +4,15 @@ require_once 'vendor/autoload.php';
 Requests::register_autoloader();
 
 var_dump($argv);
-var_dump(getenv('INPUT_WHO-TO-GREET'));
+var_dump($_ENV);
 
 $response = Requests::post(
-    'https://hooks.slack.com/services/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', 
+    $_ENV['INPUT_SLACK_WEBHOOK'], 
     array(
         'Content-type' => 'application/json'
     ),
     json_encode(array(
-        "text" => "Hello, World!"
+        "text" => $_ENV['INPUT_MESSAGE']
     ))
 );
 

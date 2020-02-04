@@ -2,10 +2,12 @@ name: 'Hello World'
 author: alialaa
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  slack_webhook:  # id of input
+    description: 'Slack Webhook'
     required: true
-    default: 'World'
+  message:  # id of input
+    description: 'Slack Message'
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -17,4 +19,5 @@ runs:
     ENV_VAR: value
   # entrypoint: 
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.slack_webhook }}
+    - ${{ inputs.message}}
