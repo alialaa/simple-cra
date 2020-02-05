@@ -8,9 +8,6 @@ inputs:
   message:  # id of input
     description: 'Slack Message'
     required: true
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
 runs:
   using: 'docker'
   # image: 'docker://debian:stetch-slim'
